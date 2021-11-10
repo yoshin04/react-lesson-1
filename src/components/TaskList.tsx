@@ -1,6 +1,7 @@
 import { memo } from 'react';
+import { TaskListType } from '../types/task/task-list';
 
-export const TaskList = memo((props) => {
+export const TaskList = memo((props: TaskListType) => {
   const { tasks, checkTaskStatus } = props;
 
   return (

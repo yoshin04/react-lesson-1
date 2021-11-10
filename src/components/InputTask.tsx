@@ -1,6 +1,7 @@
 import { memo } from 'react';
+import { InputTaskType } from '../types/task/input-task';
 
-export const InputTask = memo((props) => {
+export const InputTask = memo((props: InputTaskType) => {
   const { text, onChangeTaskText, addTask } = props;
   return (
     <>
