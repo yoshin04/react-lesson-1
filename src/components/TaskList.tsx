@@ -20,7 +20,7 @@ export const TaskList = memo((props: TaskListType) => {
               <tr>
                 <td>{ index }</td>
                 <td>{ task.text }</td>
-                <td><button>{  checkTaskStatus(task.status) }</button></td>
+                <td><button>{  checkTaskStatus(task.isComplete) }</button></td>
                 <td><button>削除</button></td>
               </tr>
             );
