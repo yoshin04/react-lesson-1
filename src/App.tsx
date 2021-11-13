@@ -5,29 +5,28 @@ import { TaskList } from './components/TaskList'
 import { Title } from './components/Title'
 import { TaskType } from './types/task/task';
 import { checkTaskStatusResponseType } from './types/task/check-task-status-response'
+import { completed, unCompleted } from './util/const/task-status';
 
 export const App = () => {
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const [text, setText] = useState<string>('');
-  const [isComplete, setIsComplete] = useState<boolean>(false);
-  const onChangeTaskText = (e: any) => setText(e.target.value);
+  const [isCompleted, setIsCompleted] = useState<boolean>(false);
+  const onChangeTaskText = (e: React.MouseEvent<HTMLButtonElement>) => setText(e.currentTarget.value);
   const addTask = () => {
     if (!text) return;
     const task: TaskType = {
       text,
-      isComplete
+      isCompleted
     }
     const newTask = [...tasks, task];
     setTasks(newTask);
     setText('');
   }
-  const checkTaskStatus = (value: boolean): checkTaskStatusResponseType => {
-    if (value) {
-      const text = '完了';
-      return text;
+  const checkTaskStatus = (taskStatus: boolean): checkTaskStatusResponseType => {
+    if (taskStatus) {
+      return completed;
     } else {
-      const text = '作業中';
-      return text;
+      return unCompleted;
     }
   }
 

@@ -1,4 +1,4 @@
 export type TaskType = {
   text: string,
-  isComplete: boolean
+  isCompleted: boolean
 };
