@@ -1,0 +1,1 @@
+export type CheckTaskStatusType = (value: boolean) => string;
