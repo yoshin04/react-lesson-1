@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { TaskListType } from '../types/task/task-list';
 
 export const TaskList = memo((props: TaskListType) => {
-  const { tasks, checkTaskStatus } = props;
+  const { tasks, checkTaskStatus, deleteTask } = props;
 
   return (
     <>
@@ -21,7 +21,7 @@ export const TaskList = memo((props: TaskListType) => {
                 <td>{ index }</td>
                 <td>{ task.text }</td>
                 <td><button>{  checkTaskStatus(task.isCompleted) }</button></td>
-                <td><button>削除</button></td>
+                <td><button onClick={() => deleteTask(index)}>削除</button></td>
               </tr>
             );
           })}
