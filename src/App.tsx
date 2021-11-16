@@ -29,10 +29,10 @@ export const App = () => {
       return unCompleted;
     }
   }
-  const deleteTask = (taskId: number) => {
+  const deleteTask = (taskId: number): void => {
     const newTasks = [...tasks];
     newTasks.splice(taskId, 1);
-    return setTasks(newTasks);
+    setTasks(newTasks);
   }
 
   return (
