@@ -1,0 +1,1 @@
+export type DeleteTaskType = (taskId: number) => void;
