@@ -1,0 +1,1 @@
+export type ChangeTaskStatus = (taskId: number) => void;
