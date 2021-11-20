@@ -29,6 +29,12 @@ export const App = () => {
       return unCompleted;
     }
   }
+  const changeTaskStatus = (taskId: number): void => {
+    const newTask = [...tasks];
+    setIsCompleted(!isCompleted);
+    newTask[taskId].isCompleted = isCompleted;
+    setTasks(newTask);
+  }
   const deleteTask = (taskId: number): void => {
     const newTasks = [...tasks];
     newTasks.splice(taskId, 1);
@@ -39,7 +45,7 @@ export const App = () => {
     <>
       <Title title='ToDoリスト' />
       <RadioForm />
-      <TaskList tasks={tasks} checkTaskStatus={checkTaskStatus} deleteTask={deleteTask} />
+      <TaskList tasks={tasks} checkTaskStatus={checkTaskStatus} changeTaskStatus={changeTaskStatus} deleteTask={deleteTask} />
       <Title title='新規追加のタスク' />
       <InputTask text={text} onChangeTaskText={onChangeTaskText} addTask={addTask} />
     </>
