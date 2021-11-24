@@ -10,6 +10,19 @@ import { completed, unCompleted } from './util/const/task-status';
 export const App = () => {
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const [text, setText] = useState<string>('');
+  const [value, setValue] = useState<string>('all');
+  const handleChange = (e: React.MouseEvent<HTMLButtonElement>) => setValue(e.currentTarget.value);
+  const filteringTasks = (task: TaskType): string => {
+    if (value === 'worked') {
+      if (task.isCompleted) return 'none';
+      return '';
+    } else if (value === 'completed') {
+      if (task.isCompleted) return '';
+      return 'none';
+    } else {
+      return ''
+    }
+  }
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const onChangeTaskText = (e: React.MouseEvent<HTMLButtonElement>) => setText(e.currentTarget.value);
   const addTask = () => {
@@ -44,8 +57,8 @@ export const App = () => {
   return (
     <>
       <Title title='ToDoリスト' />
-      <RadioForm />
-      <TaskList tasks={tasks} checkTaskStatus={checkTaskStatus} changeTaskStatus={changeTaskStatus} deleteTask={deleteTask} />
+      <RadioForm value={value} handleChange={handleChange} />
+      <TaskList tasks={tasks} checkTaskStatus={checkTaskStatus} changeTaskStatus={changeTaskStatus} deleteTask={deleteTask} filteringTasks={filteringTasks} />
       <Title title='新規追加のタスク' />
       <InputTask text={text} onChangeTaskText={onChangeTaskText} addTask={addTask} />
     </>
