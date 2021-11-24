@@ -1,0 +1,1 @@
+export type handleChangeType = (e: any) => void;

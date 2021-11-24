@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { TaskListType } from '../types/task/task-list';
 
 export const TaskList = memo((props: TaskListType) => {
-  const { tasks, checkTaskStatus, deleteTask, changeTaskStatus } = props;
+  const { tasks, checkTaskStatus, deleteTask, changeTaskStatus, filteringTasks } = props;
 
   return (
     <>
@@ -17,7 +17,7 @@ export const TaskList = memo((props: TaskListType) => {
         <tbody>
           {tasks.map((task, index) => {
             return (
-              <tr>
+              <tr style={{"display": filteringTasks(task)}}>
                 <td>{ index }</td>
                 <td>{ task.text }</td>
                 <td><button onClick={() => changeTaskStatus(index)}>{  checkTaskStatus(task.isCompleted) }</button></td>
